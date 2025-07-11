@@ -70,7 +70,12 @@ Agora aparecerá novamente o texto legível que foi salvo inicialmente.
 - Segurança: A chave key.key é essencial para recuperar os arquivos — proteja-a como ouro 💎
 
 
+🕵️‍♂️ Mensagem criptografada
+
 
 ![Minha Imagem](https://github.com/user-attachments/assets/6a44e003-c8f5-48b8-9966-1965ca138855)
 
 
+🔓 Mensagem descriptografada
+
+<img width="409" height="53" alt="Image" src="https://github.com/user-attachments/assets/71dcaf5c-f20a-43a1-897d-e5bbc14e254e" />
