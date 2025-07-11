@@ -1,0 +1,37 @@
+from cryptography.fernet import Fernet
+import os
+
+# 📥 Carrega a chave usada na criptografia
+with open("key.key", "rb") as key_file:
+    key = key_file.read()
+
+fernet = Fernet(key)
+
+# 📂 Caminho dos arquivos criptografados
+folder_path = "arquivos"
+
+# 🔁 Percorre e descriptografa os arquivos
+for filename in os.listdir(folder_path):
+    filepath = os.path.join(folder_path, filename)
+
+    # Ignora pastas
+    if os.path.isdir(filepath):
+        continue
+
+    # Lê conteúdo cifrado
+    with open(filepath, "rb") as file:
+        encrypted = file.read()
+
+    # 🔓 Tenta decifrar
+    try:
+        decrypted = fernet.decrypt(encrypted)
+    except Exception as e:
+        print(f"❌ Erro ao decifrar '{filename}': {e}")
+        continue
+
+    # Sobrescreve com conteúdo original
+    with open(filepath, "wb") as file:
+        file.write(decrypted)
+
+    # Mensagem de sucesso
+    print(f"✅ Arquivo '{filename}' decifrado com sucesso!")
