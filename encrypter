@@ -1,0 +1,35 @@
+from cryptography.fernet import Fernet
+import os
+
+# 1. Gera a chave e salva
+key = Fernet.generate_key()
+with open("key.key", "wb") as key_file:
+    key_file.write(key)
+
+# 2. Cria objeto de criptografia
+fernet = Fernet(key)
+
+# 3. Define a pasta com os arquivos
+folder_path = "arquivos"
+
+# 4. Percorre os arquivos
+for filename in os.listdir(folder_path):
+    filepath = os.path.join(folder_path, filename)
+
+    # 👉 Verifica se é uma pasta (se for, pula)
+    if os.path.isdir(filepath):
+        continue
+
+    # ✔️ Lê o conteúdo do arquivo
+    with open(filepath, "rb") as file:
+        original = file.read()
+
+    # 🔒 Criptografa
+    encrypted = fernet.encrypt(original)
+
+    # 💾 Sobrescreve com conteúdo criptografado
+    with open(filepath, "wb") as file:
+        file.write(encrypted)
+
+    # ✅ Mensagem de sucesso
+    print(f"Arquivo '{filename}' criptografado com sucesso!")
