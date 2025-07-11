@@ -22,7 +22,7 @@ Este projeto implementa um sistema de **criptografia e descriptografia de arquiv
 
 Antes de executar os scripts, instale o pacote `cryptography`:
 
-```bash
+
 pip install cryptography
 # ou, se necessário:
 pip3 install cryptography
@@ -37,13 +37,13 @@ No editor nano, digite sua mensagem sensível e salve com:
 - CTRL + X
 
 2. Execute o criptografador
-Bash
+
 python3 encrypter.py
 Isso irá gerar a chave key.key, criptografar os arquivos dentro de arquivos/, e exibir uma mensagem para cada arquivo:
 ✅ Arquivo 'dados.txt' criptografado com sucesso!
 
 3. Verifique se o conteúdo está cifrado
-Bash
+
 cat arquivos/dados.txt
 
 Se aparecer algo como:
@@ -52,13 +52,13 @@ gAAAAAB... (base64 cifrado)
 A criptografia foi aplicada com sucesso!
 
 4. Execute o descriptografador
-Bash
+
 python3 decrypter.py
 ira aparecer :
 ✅ Arquivo 'dados.txt' decifrado com sucesso!
 
 5. Verifique a recuperação da mensagem original
-Bash
+
 cat arquivos/dados.txt
 Agora aparecerá novamente o texto legível que foi salvo inicialmente.
 
